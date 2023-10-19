@@ -12,7 +12,27 @@ But it doesn't mean I recommend you to use it for any CMake projects. If you can
 
 
 ## How to install
-Make sure that hidecmakelinker and void is in one of the directory in PATH environment variable and you can call them from console.
+```console
+$ nimble install https://github.com/demotomohiro/hidecmakelinker
+```
+or
+```console
+$ https://github.com/demotomohiro/hidecmakelinker.git
+$ cd hidecmakelinker
+$ nimble build
+# Copy `src` directory or set Nim import path so that you can import modules in `src` directory
+```
+or
+```console
+$ https://github.com/demotomohiro/hidecmakelinker.git
+$ cd hidecmakelinker/src
+$ nim c hidecmakelinker.nim
+$ nim c void.nim
+# Copy `src` directory or set Nim import path so that you can import modules in `src` directory
+```
+
+`nimble install` or `nimble build` command produces 2 executable files, `hidecmakelinker` and `void`.
+Make sure that they are in the one of directories in PATH environment variable and you can call them from console.
 
 
 ## How to use
