@@ -1,5 +1,5 @@
 # hidecmakelinker
-hidecmakelinker is a tool to use C/C++ libraries using CMake from Nim programming language.
+hidecmakelinker is a tool to use C/C++ libraries using CMake from [Nim programming language](https://nim-lang.org).
 It was created to use Raspberry Pi Pico SDK from Nim but hidecmakelinker is written so that it can be used for other C/C++ projects using CMake and it doesn't contains any Raspberry Pi Pico specific code.
 But it doesn't mean I recommend you to use it for any CMake projects. If you can use C/C++ libraries from Nim just by setting header files and libraries, you don't need to use hidecmakelinker. Use it only when using C/C++ libraries without writing CMake file is hard like Raspberry Pi Pico SDK.
 
@@ -7,7 +7,7 @@ But it doesn't mean I recommend you to use it for any CMake projects. If you can
 ## Requirements
 - Nim 2.0.0
   - Nimble is not required!
-- pathX
+- [pathX](https://github.com/demotomohiro/pathX)
 - CMake 3.13 or newer
 
 
