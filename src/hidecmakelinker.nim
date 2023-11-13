@@ -41,7 +41,7 @@ proc renderCmakeStmts(result: var string; stmts: var Table[string, CMakeStmt]; d
 
 proc main =
   #echo commandLineParams()
-  let (cmakeContent, nimCacheDir) = block:
+  let (cmakeContent, nimCacheDir, buildKind) = block:
     var
       result = "cmake_minimum_required(VERSION 3.13)\n\n"
       args: seq[string]
@@ -128,12 +128,22 @@ proc main =
         msg.add &"{k} depends {v.depend} that doesn't exist\n"
       raise newException(Defect, msg)
 
-    (result, projParams.nimCacheDir)
+    (result, projParams.nimCacheDir, projParams.buildKind)
 
   writeFile nimCacheDir / "CMakeLists.txt", cmakeContent
 
-  let cmakeBuildDir = nimCacheDir / "cmakeBuildDir"
-  execProcessWithParentStream("cmake", args = ["-S", nimCacheDir, "-B", cmakeBuildDir])
+  let
+    cmakeBuildDir = nimCacheDir / "cmakeBuildDir"
+    cmakeBuildType = case buildKind:
+                     of bkDebug:
+                       "Debug"
+                     of bkRelease:
+                       "Release"
+                     of bkReleaseSize:
+                       "MinSizeRel"
+  execProcessWithParentStream("cmake", args = ["-S", nimCacheDir,
+                                               "-B", cmakeBuildDir,
+                                               "-D", "CMAKE_BUILD_TYPE=" & cmakeBuildType])
   execProcessWithParentStream("cmake", args = ["--build", cmakeBuildDir])
 
 main()

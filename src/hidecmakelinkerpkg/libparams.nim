@@ -23,6 +23,11 @@ type
     cmstCommand
     cmstCommandWithTarget
 
+  BuildKind* = enum
+    bkDebug
+    bkRelease
+    bkReleaseSize
+
   CMakeStmt* = object
     stmtKind*: CMakeStmtKind
     name*: string
@@ -38,6 +43,7 @@ type
     projectName*: string
     nimStdlibPath*: string
     nimCacheDir*: string
+    buildKind*: BuildKind
     libParams*: LibParams
 
 const

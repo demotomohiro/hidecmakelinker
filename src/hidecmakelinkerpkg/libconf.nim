@@ -73,6 +73,15 @@ proc writeHideCMakeToFileImpl(): string {.compileTime.} =
   var projParams = ProjParams(projectName: querySetting(SingleValueSetting.projectName),
                               nimStdlibPath: querySetting(SingleValueSetting.libPath),
                               nimCacheDir: querySetting(SingleValueSetting.nimcacheDir),
+                              buildKind:
+                                when defined(release):
+                                  when compileOption("opt", "size"):
+                                    bkReleaseSize
+                                  else:
+                                    bkRelease
+                                else:
+                                  bkDebug
+                              ,
                               libParams: LibParams(backendLang: if ($BackendLang.blCpp) in backendLang: blCpp else: blC,
                                                    cmakeProgLangs: cmakeProgLangs.toEnumSet(CMakeProgLang),
                                                    linkLibraries: linkLibraries.toStringHashSet,
