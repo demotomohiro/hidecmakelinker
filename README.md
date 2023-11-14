@@ -98,12 +98,12 @@ List of parameters of `initLibParams`:
 ## Supported Nim compiler options
 hidecmakelinker supports following Nim's compile options:
 - `-d:release` and `-d:danger`
-  Enables optimization
-  `--opt:size` optimize for speed
-  Uses `(CMAKE_BUILD_TYPE)[https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html]`
+  - Enables optimization
+  - `--opt:size` optimize for speed
+  - Uses [`CMAKE_BUILD_TYPE`](https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html)
 - `-d:lto`
-  Enables link time optimization
-  Uses `(INTERPROCEDURAL_OPTIMIZATION)[https://cmake.org/cmake/help/latest/prop_tgt/INTERPROCEDURAL_OPTIMIZATION.html]`
+  - Enables link time optimization
+  - Uses [`INTERPROCEDURAL_OPTIMIZATION`](https://cmake.org/cmake/help/latest/prop_tgt/INTERPROCEDURAL_OPTIMIZATION.html)
 
 
 ## How it works
