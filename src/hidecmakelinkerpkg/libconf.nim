@@ -82,6 +82,7 @@ proc writeHideCMakeToFileImpl(): string {.compileTime.} =
                                 else:
                                   bkDebug
                               ,
+                              enableLTO: defined(lto),
                               libParams: LibParams(backendLang: if ($BackendLang.blCpp) in backendLang: blCpp else: blC,
                                                    cmakeProgLangs: cmakeProgLangs.toEnumSet(CMakeProgLang),
                                                    linkLibraries: linkLibraries.toStringHashSet,

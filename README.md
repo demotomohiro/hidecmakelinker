@@ -95,6 +95,17 @@ List of parameters of `initLibParams`:
       - For example, if `cmd` is `pico_add_extra_outputs(#target)` and target name was `mynimcode`, it inserts `pico_add_extra_outputs(mynimcode)` in `CMakeLists.txt` after that target was defined
 
 
+## Supported Nim compiler options
+hidecmakelinker supports following Nim's compile options:
+- `-d:release` and `-d:danger`
+  Enables optimization
+  `--opt:size` optimize for speed
+  Uses `(CMAKE_BUILD_TYPE)[https://cmake.org/cmake/help/latest/variable/CMAKE_BUILD_TYPE.html]`
+- `-d:lto`
+  Enables link time optimization
+  Uses `(INTERPROCEDURAL_OPTIMIZATION)[https://cmake.org/cmake/help/latest/prop_tgt/INTERPROCEDURAL_OPTIMIZATION.html]`
+
+
 ## How it works
 At compile time, imported Nim modules wrapping C/C++ libraries tells information that is used to generated `CMakeLists.txt`.
 It is done by putting that information (library target names, CMake commands, whether it requires C++ compiler or etc) to `LibParams` object and pass it to `config` template in libconf module.

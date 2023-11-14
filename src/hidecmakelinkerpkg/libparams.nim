@@ -44,6 +44,7 @@ type
     nimStdlibPath*: string
     nimCacheDir*: string
     buildKind*: BuildKind
+    enableLTO*: bool
     libParams*: LibParams
 
 const

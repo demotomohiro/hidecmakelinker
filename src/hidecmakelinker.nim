@@ -120,6 +120,18 @@ proc main =
       result.add &"  {l}\n"
     result.add ")\n\n"
 
+    if projParams.enableLTO:
+      result.add &"""
+include(CheckIPOSupported)
+check_ipo_supported(RESULT result OUTPUT output)
+if(result)
+  set_property(TARGET {projectName} PROPERTY INTERPROCEDURAL_OPTIMIZATION TRUE)
+else()
+  message(WARNING "IPO is not supported: ${{output}}")
+endif()
+
+"""
+
     renderCmakeStmts(result, cmakeStmts, doneNames, projectName)
 
     if cmakeStmts.len != 0:
