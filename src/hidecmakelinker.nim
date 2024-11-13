@@ -158,6 +158,8 @@ endif()
   execProcessWithParentStream("cmake", args = ["-S", nimCacheDir,
                                                "-B", cmakeBuildDir,
                                                "-D", "CMAKE_BUILD_TYPE=" & cmakeBuildType])
-  execProcessWithParentStream("cmake", args = ["--build", cmakeBuildDir])
+  execProcessWithParentStream("cmake",
+                              args = @["--build", cmakeBuildDir, ] &
+                                     (when defined(CMakeBuildVerbose): @["--verbose"] else: @[]))
 
 main()

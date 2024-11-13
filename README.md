@@ -34,6 +34,9 @@ $ nim c void.nim
 `nimble install` or `nimble build` command produces 2 executable files, `hidecmakelinker` and `void`.
 Make sure that they are in the one of directories in PATH environment variable and you can call them from console.
 
+If `-d:CMakeBuildVerbose` option is added when compiling `hidecmakelinker.nim`,
+hidecmakelinker calls `cmake --build` with `--verbose` option and all commands cmake calls are printed.
+
 
 ## How to use
 Create `config.nims` in the same directory as your `*.nim` files and write following content:
