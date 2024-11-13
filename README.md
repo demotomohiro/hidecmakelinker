@@ -5,7 +5,7 @@ But it doesn't mean I recommend you to use it for any CMake projects. If you can
 
 
 ## Requirements
-- Nim 2.0.0
+- Nim 2.2.0
   - Nimble is not required!
 - [pathX](https://github.com/demotomohiro/pathX)
 - CMake 3.13 or newer
@@ -84,6 +84,7 @@ List of parameters of `initLibParams`:
     - If `name` is empty string, `cmakesStmts`'s `depend` cannot refer to it
     - If `depend` is empty string, it is inserted to `CMakeLists.txt` as soon as possible.
     - When the CMake command must be placed after `project` CMake command, set `std.project` to `depend`
+    - When the CMake command must be placed after CMake commands with empty `depend`, set `std.topStmts` to `depend`
   - Following procedures creates a CMake command
     - `initCMakeInclude*(path: string; name = "", depend = ""): (string, CMakeStmt)`
       - Generates `include` command

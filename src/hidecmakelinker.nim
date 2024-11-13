@@ -84,6 +84,8 @@ proc main =
       doneNames: HashSet[string]
 
     renderCmakeStmts(result, cmakeStmts, doneNames, "")
+    doneNames.incl "std.topStmts"
+    renderCmakeStmts(result, cmakeStmts, doneNames, "")
 
     result.add &"project({projectName} LANGUAGES"
     for l in projParams.libParams.cmakeProgLangs:
