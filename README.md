@@ -17,14 +17,14 @@ $ nimble install https://github.com/demotomohiro/hidecmakelinker
 ```
 or
 ```console
-$ https://github.com/demotomohiro/hidecmakelinker.git
+$ git clone https://github.com/demotomohiro/hidecmakelinker.git
 $ cd hidecmakelinker
 $ nimble build
 # Copy `src` directory or set Nim import path so that you can import modules in `src` directory
 ```
 or
 ```console
-$ https://github.com/demotomohiro/hidecmakelinker.git
+$ git clone https://github.com/demotomohiro/hidecmakelinker.git
 $ cd hidecmakelinker/src
 $ nim c hidecmakelinker.nim
 $ nim c void.nim
